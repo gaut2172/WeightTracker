@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Weight Tracker</string>
+    <string name="login_textView_1">Welcome!</string>
+    <string name="login_textView_2">Please log in to continue</string>
+    <string name="login_button">Login</string>
+    <string name="create_button">Create Account</string>
+    <string name="action_add">Add</string>
+    <string name="title_weight_activity">Daily Weights Log</string>
+</resources>
