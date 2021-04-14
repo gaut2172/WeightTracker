@@ -10,8 +10,13 @@
     <string name="button_change_target_weight">Change target weight</string>
     <string name="goal_text">TARGET WEIGHT: </string>
     <string name="goal_weight">180.0 lbs</string>
-    <string name="addChange_popup_title">Add/Change Weight Record</string>
+    <string name="add_popup_title">Enter New Weight Record</string>
+    <string name="edit_popup_title">Enter your changes to this record</string>
     <string name="targetWeight_popup_title">Change Target Weight</string>
     <string name="permissions_popup_title">Permissions Request</string>
     <string name="permissions_popup_question">Can Weight Tracker access your messages app and send you SMS messages?</string>
+    <string name="user_create_success">New user account successfully added</string>
+    <string name="user_create_fail">Please enter valid username and password</string>
+    <string name="username_found">Username already exists</string>
+    <string name="login_failed">Login attempt failed</string>
 </resources>

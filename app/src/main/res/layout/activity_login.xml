@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.041" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/feedbackTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -77,7 +77,8 @@
         android:text="@string/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        android:onClick="onLoginClick"/>
 
     <Button
         android:id="@+id/button_create_account"
@@ -87,6 +88,7 @@
         android:text="@string/create_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_login" />
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        android:onClick="onCreateAccountClick"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

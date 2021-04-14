@@ -28,12 +28,34 @@
             app:layout_constraintTop_toTopOf="parent" >
 
             <ImageButton
-                android:layout_width="50dp"
+                android:id="@+id/deleteRecordButton"
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:paddingRight="20dp"
+                android:paddingRight="15dp"
                 android:background="@color/purple_500"
-                app:srcCompat="@drawable/add_big" />
+                app:srcCompat="@drawable/trash_can"
+                android:onClick="deleteRecordOnClick"/>
+
+            <ImageButton
+                android:id="@+id/editRecordButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:paddingRight="15dp"
+                android:background="@color/purple_500"
+                app:srcCompat="@drawable/pencil_edit"
+                android:onClick="editRecordOnClick"/>
+
+            <ImageButton
+                android:id="@+id/addRecordButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:paddingRight="15dp"
+                android:background="@color/purple_500"
+                app:srcCompat="@drawable/add_big"
+                android:onClick="addRecordOnClick"/>
         </Toolbar>
 
         <ScrollView
@@ -47,369 +69,53 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <TableLayout
+                android:id="@+id/dailyWeightTable"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:stretchColumns="1">
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="0dp"
-                        android:gravity="center"
                         android:layout_weight=".3"
+                        android:gravity="center"
+                        android:padding="20dp"
                         android:text="Date"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:padding="20dp"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="0dp"
-                        android:gravity="center"
                         android:layout_weight=".3"
+                        android:gravity="center"
+                        android:padding="20dp"
                         android:text="Weight"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:padding="20dp"/>
+                        android:textStyle="bold" />
 
-                    <ImageButton
-                        android:visibility="invisible"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:visibility="invisible"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
 
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/22/2021"
-                        android:padding="20dp"/>
+                        android:padding="20dp"
+                        android:text="1/22/2021" />
+
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="202.4 lbs"
-                        android:padding="20dp"/>
+                        android:padding="20dp"
+                        android:text="202.4 lbs" />
 
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
                 </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/23/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="202.6 lbs"
-                        android:padding="20dp"/>
 
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/24/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="201.1 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/22/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="202.4 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/23/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="202.6 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/24/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="201.1 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/24/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="201.1 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/24/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="201.1 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/24/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="201.1 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="1/24/2021"
-                        android:padding="20dp"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_weight=".3"
-                        android:text="201.1 lbs"
-                        android:padding="20dp"/>
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="10dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/pencil_edit_orig_black" />
-
-                    <ImageButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"
-                        android:gravity="center"
-                        android:paddingRight="20dp"
-                        android:background="@color/white"
-                        app:srcCompat="@drawable/trash_can" />
-                </TableRow>
             </TableLayout>
         </ScrollView>
 
