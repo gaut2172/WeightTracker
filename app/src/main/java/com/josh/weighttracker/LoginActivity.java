@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.josh.weighttracker.Models.User;
-import com.josh.weighttracker.Models.WeightTrackerDatabase;
 
 import java.util.List;
 
@@ -106,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             for(StackTraceElement elem: e.getStackTrace()) {
                 error += elem.toString();
             }
-            Log.e("LoginActivity", error);
+            Log.e("LoginActivity - ", error);
         }
 
     }
