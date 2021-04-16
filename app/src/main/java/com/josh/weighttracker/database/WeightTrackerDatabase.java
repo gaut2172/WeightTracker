@@ -1,4 +1,4 @@
-package com.josh.weighttracker;
+package com.josh.weighttracker.database;
 
 import android.content.Context;
 
@@ -7,8 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.josh.weighttracker.Models.DailyWeight;
-import com.josh.weighttracker.Models.User;
+import com.josh.weighttracker.model.DailyWeight;
+import com.josh.weighttracker.model.User;
 
 @Database(entities = {User.class, DailyWeight.class}, version = 1)
 //@Database(entities = {User.class, DailyWeight.class, GoalWeight.class}, version = 1)

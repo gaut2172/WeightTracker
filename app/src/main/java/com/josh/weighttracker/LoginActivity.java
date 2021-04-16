@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.josh.weighttracker.Models.User;
+import com.josh.weighttracker.database.UserDao;
+import com.josh.weighttracker.database.WeightTrackerDatabase;
+import com.josh.weighttracker.model.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.josh.weighttracker;
+package com.josh.weighttracker.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.josh.weighttracker.Models.User;
+import com.josh.weighttracker.model.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.josh.weighttracker.Models;
+package com.josh.weighttracker.model;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity(tableName = "dailyWeights", foreignKeys = @ForeignKey(entity = User.class,
-        parentColumns = "id",
-        childColumns = "userId",
+        parentColumns = "username",
+        childColumns = "username",
         onDelete = ForeignKey.CASCADE),
         indices = {@Index(value = {"date"}, unique = true)})
 public class DailyWeight implements Serializable {

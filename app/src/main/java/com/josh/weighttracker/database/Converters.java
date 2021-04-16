@@ -1,4 +1,4 @@
-package com.josh.weighttracker;
+package com.josh.weighttracker.database;
 
 import androidx.room.TypeConverter;
 

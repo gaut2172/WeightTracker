@@ -1,4 +1,4 @@
-package com.josh.weighttracker;
+package com.josh.weighttracker.helpers;
 
 /**
  * Helper class to parse ints and doubles

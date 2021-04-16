@@ -1,4 +1,4 @@
-package com.josh.weighttracker.Models;
+package com.josh.weighttracker.model;
 
 import androidx.room.Entity;
 import androidx.room.Index;

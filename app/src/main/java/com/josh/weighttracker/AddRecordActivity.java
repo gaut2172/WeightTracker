@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.josh.weighttracker.Models.DailyWeight;
+import com.josh.weighttracker.helpers.ParseNumbers;
+import com.josh.weighttracker.model.DailyWeight;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -48,7 +49,7 @@ public class AddRecordActivity extends AppCompatActivity {
 
     public void saveButtonClick(View view) {
         try {
-            DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
             Date date;
 
             // get date input and parse

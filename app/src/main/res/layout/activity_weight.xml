@@ -75,9 +75,11 @@
                 android:layout_height="match_parent"
                 android:stretchColumns="1">
 
-                <TableRow>
+                <TableRow
+                    android:id="@+id/headerRow">
 
                     <TextView
+                        android:id="@+id/headerDate"
                         android:layout_width="0dp"
                         android:layout_weight=".3"
                         android:gravity="center"
@@ -87,6 +89,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/headerWeight"
                         android:layout_width="0dp"
                         android:layout_weight=".3"
                         android:gravity="center"
