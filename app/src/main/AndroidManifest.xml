@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeightTracker">
-        <activity android:name=".AddRecordActivity"></activity>
-        <activity android:name=".WeightActivity"></activity>
+        <activity android:name=".GrantPermissionsActivity"></activity>
+        <activity android:name=".ChangeTargetActivity" />
+        <activity android:name=".ChangeRecordActivity" />
+        <activity android:name=".AddRecordActivity" />
+        <activity android:name=".WeightActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

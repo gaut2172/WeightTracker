@@ -19,4 +19,6 @@
     <string name="user_create_fail">Please enter valid username and password</string>
     <string name="username_found">Username already exists</string>
     <string name="login_failed">Login attempt failed</string>
+    <string name="change_record">Change a Record</string>
+    <string name="change_record_prompt">PLEASE ENTER A DATE TO CHANGE</string>
 </resources>

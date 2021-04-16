@@ -19,7 +19,6 @@ import java.util.Locale;
 
 public class AddRecordActivity extends AppCompatActivity {
 
-//    private User mUser;
     private EditText mDate_editText;
     private EditText mWeight_editText;
     private Button mSaveButton;
@@ -37,9 +36,6 @@ public class AddRecordActivity extends AppCompatActivity {
             mWeight_editText = (EditText) this.findViewById(R.id.editTextWeight);
             mSaveButton = (Button) this.findViewById(R.id.popup_saveButton);
             mCancelButton = (Button) this.findViewById(R.id.popup_cancelButton);
-
-//            Intent intent = getIntent();
-//            mUser = (User) getIntent().getSerializableExtra("user");
 
         }
         catch (Exception e) {
