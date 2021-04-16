@@ -32,8 +32,9 @@ public class AddRecordActivity extends AppCompatActivity {
             this.getSupportActionBar().hide();
             setContentView(R.layout.activity_add_record);
 
+            // get views from layout file
             mDate_editText = (EditText) this.findViewById(R.id.editTextDate);
-            mWeight_editText = (EditText) this.findViewById(R.id.editTextWeight);
+            mWeight_editText = (EditText) this.findViewById(R.id.deleteRecord_editTextWeight);
             mSaveButton = (Button) this.findViewById(R.id.popup_saveButton);
             mCancelButton = (Button) this.findViewById(R.id.popup_cancelButton);
 
@@ -87,7 +88,7 @@ public class AddRecordActivity extends AppCompatActivity {
     }
 
     public void cancelButtonClick(View view) {
-        Intent returnIntent = new Intent();
+        Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
         finish();
     }

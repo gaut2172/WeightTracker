@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/popup_title_textView" />
 
     <EditText
-        android:id="@+id/editTextWeight"
+        android:id="@+id/deleteRecord_editTextWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextWeight"
+        app:layout_constraintTop_toBottomOf="@+id/deleteRecord_editTextWeight"
         app:layout_constraintVertical_bias="0.439"
         android:onClick="cancelButtonClick"/>
 
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.309"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextWeight"
+        app:layout_constraintTop_toBottomOf="@+id/deleteRecord_editTextWeight"
         app:layout_constraintVertical_bias="0.439"
         android:onClick="saveButtonClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

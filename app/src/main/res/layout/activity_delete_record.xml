@@ -11,24 +11,24 @@
         android:id="@+id/image_alertBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:cropToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pencil_edit_purple" />
+        app:srcCompat="@drawable/trash_can_purple" />
 
     <TextView
-        android:id="@+id/popup_title_textView"
+        android:id="@+id/delete_titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/change_title"
+        android:layout_marginTop="4dp"
+        android:text="@string/delete_record_title"
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_alertBox" />
 
@@ -36,7 +36,7 @@
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="Date"
         android:inputType="date"
@@ -45,68 +45,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_record_prompt" />
 
-    <EditText
-        android:id="@+id/deleteRecord_editTextWeight"
+    <Button
+        android:id="@+id/deleteRecord_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:hint="Weight"
-        android:inputType="numberDecimal"
+        android:layout_marginTop="116dp"
+        android:onClick="deleteButtonOnClick"
+        android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <Button
+        android:id="@+id/confirmDelete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:onClick="confirmButtonOnClick"
+        android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
         android:visibility="invisible"/>
 
     <Button
-        android:id="@+id/popup_cancelButton"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:onClick="cancelButtonClick"
         android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintHorizontal_bias="0.686"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteRecord_editTextWeight"
-        app:layout_constraintVertical_bias="0.439"
-        android:onClick="change_cancelButtonClick"/>
-
-    <Button
-        android:id="@+id/popup_saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.309"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteRecord_editTextWeight"
-        app:layout_constraintVertical_bias="0.439"
-        android:onClick="change_saveButtonClick"
-        android:visibility="invisible"/>
-
-    <Button
-        android:id="@+id/changeRecord_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="changeDate_buttonClick"
-        android:text="Change"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.309"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteRecord_editTextWeight"
-        app:layout_constraintVertical_bias="0.439" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
     <TextView
         android:id="@+id/change_record_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/change_record_prompt"
+        android:text="@string/delete_record_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popup_title_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/delete_titleTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,41 +81,25 @@
                     <TextView
                         android:id="@+id/headerDate"
                         android:layout_width="0dp"
-                        android:layout_weight=".3"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:padding="20dp"
-                        android:text="Date"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/header_date"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/headerWeight"
                         android:layout_width="0dp"
-                        android:layout_weight=".3"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:padding="20dp"
-                        android:text="Weight"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/header_weight"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight=".5"
-                        android:gravity="center"
-                        android:padding="20dp"
-                        android:text="1/22/2021" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight=".5"
-                        android:gravity="center"
-                        android:padding="20dp"
-                        android:text="202.4 lbs" />
 
                 </TableRow>
 

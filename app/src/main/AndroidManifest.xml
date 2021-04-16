@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeightTracker">
-        <activity android:name=".GrantPermissionsActivity"></activity>
+        <activity android:name=".DeleteRecordActivity"></activity>
+        <activity android:name=".GrantPermissionsActivity" />
         <activity android:name=".ChangeTargetActivity" />
         <activity android:name=".ChangeRecordActivity" />
         <activity android:name=".AddRecordActivity" />
