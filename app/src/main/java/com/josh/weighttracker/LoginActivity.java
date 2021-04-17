@@ -1,8 +1,11 @@
 package com.josh.weighttracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    // login button callback
+    /**
+     * Login button callback
+     */
     public void onLoginClick(View view) {
         try {
             // get user input from EditText fields
@@ -63,7 +68,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    // callback for account creation button
+    /**
+     * Callback for account creation button
+     */
     public void onCreateAccountClick(View view) {
 
         // get user input from EditText fields
@@ -112,7 +119,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    // query users table in SQLite database for matching username and password
+
+    /**
+     * Query users table in SQLite database for matching username and password
+     */
     private boolean login(String username, String password) {
         List<User> userList = mUserDao.getUsers();
         System.out.println("size of userList: " + userList.size());
@@ -125,8 +135,9 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
-
-    // Change to WeightActivity
+    /**
+     * Change to WeightActivity
+     */
     public void changeToWeightActivity() {
         Intent intent = new Intent(this, WeightActivity.class);
         intent.putExtra("user", mUser);

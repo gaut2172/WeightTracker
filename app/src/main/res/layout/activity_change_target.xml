@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/popup_title_textView" />
 
     <Button
-        android:id="@+id/popup_cancelButton"
+        android:id="@+id/goalWeight_cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
@@ -55,10 +55,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalWeight_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/goalWeight_editText"
+        android:onClick="cancelButtonClick"/>
 
     <Button
-        android:id="@+id/popup_saveButton"
+        android:id="@+id/goalWeight_saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
@@ -66,5 +67,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.309"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalWeight_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/goalWeight_editText"
+        android:onClick="saveButtonClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

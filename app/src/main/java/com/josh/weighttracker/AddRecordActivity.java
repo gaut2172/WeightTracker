@@ -35,8 +35,8 @@ public class AddRecordActivity extends AppCompatActivity {
             // get views from layout file
             mDate_editText = (EditText) this.findViewById(R.id.editTextDate);
             mWeight_editText = (EditText) this.findViewById(R.id.deleteRecord_editTextWeight);
-            mSaveButton = (Button) this.findViewById(R.id.popup_saveButton);
-            mCancelButton = (Button) this.findViewById(R.id.popup_cancelButton);
+            mSaveButton = (Button) this.findViewById(R.id.goalWeight_saveButton);
+            mCancelButton = (Button) this.findViewById(R.id.goalWeight_cancelButton);
 
         }
         catch (Exception e) {

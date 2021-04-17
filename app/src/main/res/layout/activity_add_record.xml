@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
     <Button
-        android:id="@+id/popup_cancelButton"
+        android:id="@+id/goalWeight_cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
@@ -72,7 +72,7 @@
         android:onClick="cancelButtonClick"/>
 
     <Button
-        android:id="@+id/popup_saveButton"
+        android:id="@+id/goalWeight_saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"

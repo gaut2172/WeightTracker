@@ -8,10 +8,11 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity(tableName = "dailyWeights", foreignKeys = @ForeignKey(entity = User.class,
-        parentColumns = "username",
-        childColumns = "username",
-        onDelete = ForeignKey.CASCADE),
+@Entity(tableName = "dailyWeights",
+        foreignKeys = @ForeignKey(entity = User.class,
+            parentColumns = "username",
+            childColumns = "username",
+            onDelete = ForeignKey.CASCADE),
         indices = {@Index(value = {"date"}, unique = true)})
 public class DailyWeight implements Serializable {
 

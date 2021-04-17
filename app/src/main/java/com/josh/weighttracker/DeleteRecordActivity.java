@@ -112,7 +112,7 @@ public class DeleteRecordActivity extends AppCompatActivity {
         }
 
         // delete record from database
-        mDailyWeightDao.deleteDailyWeight(mDate);
+        mDailyWeightDao.deleteDailyWeight(mUser.getUsername(), mDate);
 
         // end this activity and return to calling activity
         Intent returnableIntent = getIntent();

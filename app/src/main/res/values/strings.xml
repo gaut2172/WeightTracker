@@ -9,7 +9,7 @@
     <string name="title_weight_activity">Daily Weights Log</string>
     <string name="button_change_target_weight">Change target weight</string>
     <string name="goal_text">TARGET WEIGHT: </string>
-    <string name="goal_weight">180.0 lbs</string>
+    <string name="goal_weight">150.0 lbs</string>
     <string name="add_popup_title">Enter New Weight Record</string>
     <string name="change_title">Change Weight Record</string>
     <string name="targetWeight_popup_title">Change Target Weight</string>

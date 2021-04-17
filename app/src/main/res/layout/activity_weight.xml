@@ -137,13 +137,14 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/editTargetWeight_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@color/purple_700"
-                app:srcCompat="@drawable/pencil_edit" />
+                app:srcCompat="@drawable/pencil_edit"
+                android:onClick="editTargetOnClick"/>
 
         </LinearLayout>
 

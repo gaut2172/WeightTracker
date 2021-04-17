@@ -15,9 +15,16 @@ import java.util.List;
 @Dao
 public interface DailyWeightDao {
 
+    /**
+     * Get all records from ALL users
+     */
     @Query("SELECT * FROM dailyWeights ORDER BY date")
     public List<DailyWeight> getAllDailyWeights();
 
+    /**
+     * Get all records from CURRENT user
+     * Order by date. Earliest to latest date.
+     */
     @Query("SELECT * FROM dailyWeights WHERE username = :input ORDER BY date ASC")
     public List<DailyWeight> getDailyWeightsOfUser(String input);
 
@@ -34,8 +41,8 @@ public interface DailyWeightDao {
     /**
      * Delete record by date
      */
-    @Query("DELETE FROM dailyWeights WHERE date = :date")
-    void deleteDailyWeight(Date date);
+    @Query("DELETE FROM dailyWeights WHERE username = :username AND  date = :date")
+    void deleteDailyWeight(String username, Date date);
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     public void insertDailyWeight(DailyWeight dailyWeight);

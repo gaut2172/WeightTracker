@@ -52,9 +52,9 @@ public class ChangeRecordActivity extends AppCompatActivity {
             // get views from layout file
             mDate_editText = (EditText) this.findViewById(R.id.editTextDate);
             mWeight_editText = (EditText) this.findViewById(R.id.deleteRecord_editTextWeight);
-            mSaveButton = (Button) this.findViewById(R.id.popup_saveButton);
+            mSaveButton = (Button) this.findViewById(R.id.goalWeight_saveButton);
             mChangeButton = (Button) this.findViewById(R.id.changeRecord_button);
-            mCancelButton = (Button) this.findViewById(R.id.popup_cancelButton);
+            mCancelButton = (Button) this.findViewById(R.id.goalWeight_cancelButton);
             mPrompt = (TextView) this.findViewById(R.id.change_record_prompt);
 
             // get current user from intent
@@ -64,9 +64,7 @@ public class ChangeRecordActivity extends AppCompatActivity {
             // set formatter
             mFormatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
 
-
-        }
-        catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
