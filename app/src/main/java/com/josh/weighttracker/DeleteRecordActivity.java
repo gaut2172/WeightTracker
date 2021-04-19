@@ -31,7 +31,6 @@ public class DeleteRecordActivity extends AppCompatActivity {
     private EditText mDate_editText;
     private Button mDeleteButton;
     private Button mConfirmButton;
-    private Button mCancelButton;
     TextView mPrompt;
     Date mDate;
     DateFormat mFormatter;
@@ -54,7 +53,6 @@ public class DeleteRecordActivity extends AppCompatActivity {
             mPrompt = (TextView) this.findViewById(R.id.change_record_prompt);
             mDeleteButton = (Button) this.findViewById(R.id.deleteRecord_button);
             mConfirmButton = (Button) this.findViewById(R.id.confirmDelete_button);
-            mCancelButton = (Button) this.findViewById(R.id.cancelButton);
 
             // get current user from intent
             Intent intent = getIntent();
@@ -69,9 +67,13 @@ public class DeleteRecordActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for delete button
+     * Finds record in DailyWeight table that matches the specified date
+     * Asks user for to confirm they want to delete the record
+     */
     public void deleteButtonOnClick(View view) {
         try {
-
             // hide keyboard
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(mDeleteButton.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
@@ -104,6 +106,11 @@ public class DeleteRecordActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for confirm button
+     * Performs delete query on DailyWeight table
+     * Deletes one record matching the user's date input
+     */
     public void confirmButtonOnClick(View view) {
         if (mDate == null) {
             mPrompt.setText("SOMETHING WENT WRONG");
@@ -122,6 +129,10 @@ public class DeleteRecordActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for cancel button
+     * Stops this activity and returns to calling activity
+     */
     public void cancelButtonClick(View view) {
         Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);

@@ -132,7 +132,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
                 android:gravity="center"
-                android:text="@string/goal_weight"
+                android:text="@string/default_goal_weight"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 

@@ -11,7 +11,9 @@ import com.josh.weighttracker.model.DailyWeight;
 import com.josh.weighttracker.model.GoalWeight;
 import com.josh.weighttracker.model.User;
 
-//@Database(entities = {User.class, DailyWeight.class}, version = 1)
+/**
+ * SQLite database class
+ */
 @Database(entities = {User.class, DailyWeight.class, GoalWeight.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class WeightTrackerDatabase extends RoomDatabase {
@@ -30,7 +32,6 @@ public abstract class WeightTrackerDatabase extends RoomDatabase {
     }
 
     public abstract UserDao userDao();
-
     public abstract DailyWeightDao dailyWeightDao();
     public abstract GoalWeightDao goalWeightDao();
 }

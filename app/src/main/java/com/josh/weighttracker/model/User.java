@@ -6,10 +6,15 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+/**
+ * User table class
+ * Room Database class for SQLite
+ */
 @Entity(tableName = "users",
         indices = {@Index(value = {"username"}, unique = true)})
 public class User implements Serializable {
 
+    // Columns AKA data members
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -17,6 +22,7 @@ public class User implements Serializable {
 
     private String password;
 
+    // Constructors
     public User() {
         username = null;
         password = null;
@@ -27,6 +33,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    // Getters
     public int getId() {
         return id;
     }
@@ -39,6 +46,7 @@ public class User implements Serializable {
         return password;
     }
 
+    // Setters
     public void setId(int id) {
         this.id = id;
     }

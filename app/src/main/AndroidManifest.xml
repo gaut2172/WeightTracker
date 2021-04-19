@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.josh.weighttracker">
 
+    <uses-sdk
+        android:minSdkVersion="27"
+        android:targetSdkVersion="29"
+        android:maxSdkVersion="29" />
+
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
@@ -13,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeightTracker">
         <activity android:name=".DeleteRecordActivity"></activity>
-        <activity android:name=".GrantPermissionsActivity" />
         <activity android:name=".ChangeTargetActivity" />
         <activity android:name=".ChangeRecordActivity" />
         <activity android:name=".AddRecordActivity" />

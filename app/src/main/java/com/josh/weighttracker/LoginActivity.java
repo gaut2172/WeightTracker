@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Login button callback
+     * Searches User table for credentials input
+     * Authenticates user and starts WeightActivity
      */
     public void onLoginClick(View view) {
         try {
@@ -70,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Callback for account creation button
+     * Queries User table to see if username chosen is already taken,
+     * then inserts new user record into User table
      */
     public void onCreateAccountClick(View view) {
 
@@ -121,11 +125,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
     /**
-     * Query users table in SQLite database for matching username and password
+     * Query User table in SQLite database for matching username and password
      */
     private boolean login(String username, String password) {
         List<User> userList = mUserDao.getUsers();
-        System.out.println("size of userList: " + userList.size());
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getUsername().equals(username) &&
                     userList.get(i).getPassword().equals(password)) {
@@ -135,8 +138,9 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
+
     /**
-     * Change to WeightActivity
+     * Starts the WeightActivity
      */
     public void changeToWeightActivity() {
         Intent intent = new Intent(this, WeightActivity.class);

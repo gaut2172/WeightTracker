@@ -23,7 +23,6 @@ public class AddRecordActivity extends AppCompatActivity {
     private EditText mWeight_editText;
     private Button mSaveButton;
     private Button mCancelButton;
-    DailyWeight mNewRecord = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +43,11 @@ public class AddRecordActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Callback for save button
+     * Parses user input and creates a new DailyWeight object to be inserted into database
+     */
     public void saveButtonClick(View view) {
         try {
             DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
@@ -63,7 +67,7 @@ public class AddRecordActivity extends AppCompatActivity {
             // parse input to double
             double weight = Double.parseDouble(weight_string);
 
-//            // make new DailyWeight object
+            // make new DailyWeight object
             DailyWeight newWeight = new DailyWeight();
             newWeight.setDate(date);
             newWeight.setWeight(weight);
@@ -71,14 +75,8 @@ public class AddRecordActivity extends AppCompatActivity {
             // pass parsable string input to calling activity
             Intent returnableIntent = getIntent();
             returnableIntent.putExtra("newDailyWeight", newWeight);
-//            returnableIntent.putExtra("newDailyWeight", weight_string);
-//            returnableIntent.putExtra("newDate", date_string);
             setResult(Activity.RESULT_OK, returnableIntent);
 
-//            System.out.println("AddRecordActivity...newWeight.date---- " + newWeight.getDate());
-//            Intent intent = getIntent();
-//            intent.putExtra("newDailyWeight", newWeight);
-//            DailyWeight dailyWeight = (DailyWeight) intent.getSerializableExtra("newDailyWeight");
             // end this activity and return to calling activity
             finish();
 
@@ -87,6 +85,11 @@ public class AddRecordActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Callback for cancel button
+     * Returns to calling activity
+     */
     public void cancelButtonClick(View view) {
         Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);

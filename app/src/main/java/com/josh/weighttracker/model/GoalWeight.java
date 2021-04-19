@@ -6,7 +6,8 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 /**
- * GoalWeight table
+ * GoalWeight table class
+ * Room Database class for SQLite
  * Should only have one record per user at all times
  */
 @Entity(tableName = "goalWeight",
@@ -17,20 +18,21 @@ import androidx.room.PrimaryKey;
         indices = {@Index(value = {"username"}, unique = true)})
 public class GoalWeight {
 
-    public GoalWeight() {}
-
-    public GoalWeight(double goal, String username) {;
-        this.id = 1;
-        this.username = username;
-        this.goal = goal;
-    }
-
-    @PrimaryKey(autoGenerate = false)
+    // Columns AKA data members
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String username;
 
     private double goal;
+
+    // Constructors
+    public GoalWeight() {}
+
+    public GoalWeight(double goal, String username) {;
+        this.username = username;
+        this.goal = goal;
+    }
 
     // Getters
     public int getId() { return id; }
@@ -40,7 +42,7 @@ public class GoalWeight {
     public double getGoal() { return goal; }
 
     // Setters
-    public void setId(int id) { this.id = 1; }
+    public void setId(int id) { this.id = id; }
 
     public void setUsername(String username) { this.username = username; }
 

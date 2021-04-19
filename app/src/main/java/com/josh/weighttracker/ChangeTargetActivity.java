@@ -45,26 +45,23 @@ public class ChangeTargetActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for save button
+     * Performs update query on GoalWeight table if user input is parsable to double
+     */
     public void saveButtonClick(View view) {
         try {
             String weight_string = mGoalWeightEditText.getText().toString();
 
-            // if weight input is not a parsable double
+            // if weight input is not a parsable double, notify user
             if (!ParseNumbers.isParsableDouble(weight_string)) {
                 System.out.println("WEIGHT ENTERED COULD NOT BE PARSED");
             }
             // parse input to double
             double weight = Double.parseDouble(weight_string);
 
-            System.out.println("This is what we want it to become: " + weight);
-
-            // FIXME: change database GoalWeight model so there is a singleton column
-            //GoalWeight dumby = mGoalWeightDao.getSingleGoalWeight();
-            //System.out.println("dumby.getId()......" + dumby.getId());
-
             // perform update on database record
             mGoalWeightDao.updateGoalWeight(weight, mUser.getUsername());
-            System.out.println("THE UPDATEGOALWEIGHT FUNCTION RAN!!.................................................................................................");
 
             // end this activity and return to calling activity
             Intent returnableIntent = getIntent();
@@ -77,6 +74,10 @@ public class ChangeTargetActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for cancel button
+     * Closes this activity and returns to calling activity
+     */
     public void cancelButtonClick(View view) {
         Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);

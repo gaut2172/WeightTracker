@@ -21,15 +21,15 @@ public interface GoalWeightDao {
     public List<GoalWeight> getAllUserGoalWeights(String username);
 
     /**
-     * Read single record in this table
+     * Read the single record in this table for the current user
      */
-    @Query("SELECT * FROM goalWeight WHERE username = :username AND id = 1")
+    @Query("SELECT * FROM goalWeight WHERE username = :username")
     public GoalWeight getSingleGoalWeight(String username);
 
     /**
      * Update the single record from current user
      */
-    @Query("UPDATE goalWeight SET goal = :newGoal WHERE username = :username AND id = 1")
+    @Query("UPDATE goalWeight SET goal = :newGoal WHERE username = :username")
     public void updateGoalWeight(double newGoal, String username);
 
     /**

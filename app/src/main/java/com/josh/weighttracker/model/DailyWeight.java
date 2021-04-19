@@ -8,22 +8,19 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Daily weight records table class
+ * Room Database class for SQLite
+ */
 @Entity(tableName = "dailyWeights",
         foreignKeys = @ForeignKey(entity = User.class,
             parentColumns = "username",
             childColumns = "username",
             onDelete = ForeignKey.CASCADE),
-        indices = {@Index(value = {"date"}, unique = true)})
+        indices = {@Index(value = {"date", "username"}, unique = true)})
 public class DailyWeight implements Serializable {
 
-    public DailyWeight() {}
-
-    public DailyWeight(Date date, double weight, String username) {
-        this.date = date;
-        this.weight = weight;
-        this.username = username;
-    }
-
+    // Columns AKA data members
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -32,6 +29,16 @@ public class DailyWeight implements Serializable {
     private double weight;
 
     private String username;
+
+    // Constructors
+    public DailyWeight() {}
+
+    public DailyWeight(Date date, double weight, String username) {
+        this.date = date;
+        this.weight = weight;
+        this.username = username;
+    }
+
 
     // Getters
     public int getId() { return id; }

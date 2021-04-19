@@ -14,6 +14,9 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
+    /**
+     * Get list of all users
+     */
     @Query("SELECT * FROM users ORDER BY username")
     public List<User> getUsers();
 

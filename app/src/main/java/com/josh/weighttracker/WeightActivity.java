@@ -30,6 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
+import static android.widget.Toast.makeText;
+
 public class WeightActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
@@ -46,7 +48,6 @@ public class WeightActivity extends AppCompatActivity {
     TableLayout mTableLayout;
     TextView mTargetWeight;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -54,6 +55,7 @@ public class WeightActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             this.getSupportActionBar().hide();
             setContentView(R.layout.activity_weight);
+
             mTableLayout = (TableLayout)findViewById(R.id.dailyWeightTable);
             mTargetWeight = (TextView)findViewById(R.id.goalWeightText);
 
@@ -69,7 +71,7 @@ public class WeightActivity extends AppCompatActivity {
             refreshTable();
             refreshTargetWeight();
 
-            // check for permissions, ask user for permissions if need be
+            // check for granted permissions, ask user for permissions if need be
             checkForAllPermissions();
         }
         catch (Exception e) {
@@ -78,11 +80,13 @@ public class WeightActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Refreshes target weight figure on screen
+     */
     public void refreshTargetWeight() {
         try {
             mGoalWeightDao = mWeightTrackerDb.goalWeightDao();
             int count = mGoalWeightDao.countGoalEntries(mUser.getUsername());
-            System.out.println("countGoalEntries():____________________________---- " + count);
             // if there is no goal weight, insert default goal weight of 150lbs
             if (count == 0) {
                 GoalWeight defaultGoal = new GoalWeight(150.0, mUser.getUsername());
@@ -96,12 +100,9 @@ public class WeightActivity extends AppCompatActivity {
             }
 
             count = mGoalWeightDao.countGoalEntries(mUser.getUsername());
-            System.out.println("countGoalEntries() NOW:____________________________---- " + count);
 
             GoalWeight currentGoal = mGoalWeightDao.getSingleGoalWeight(mUser.getUsername());
             mTargetWeight.setText(currentGoal.getGoal() + " lbs");
-
-            System.out.println(currentGoal.getGoal());
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -181,14 +182,18 @@ public class WeightActivity extends AppCompatActivity {
             // get all DailyWeight records of this user
             List<DailyWeight> userDailyWeights = mDailyWeightDao
                     .getDailyWeightsOfUser(mUser.getUsername());
+
             // get most recent weight. Latest date in the list
-            double currentWeight = userDailyWeights.get(userDailyWeights.size() - 1).getWeight();
-            // get target weight for this user
-            double targetWeight = mGoalWeightDao.getSingleGoalWeight(mUser.getUsername()).getGoal();
-            System.out.println("THIS PART WORKED, THANK GOD..................................................");
-            // if current weight is lower than goal
-            if (currentWeight <= targetWeight) {
-                sendTextToUser();
+            if (userDailyWeights.size() != 0) {
+                double currentWeight = userDailyWeights.get(userDailyWeights.size() - 1).getWeight();
+
+                // get target weight for this user
+                double targetWeight = mGoalWeightDao.getSingleGoalWeight(mUser.getUsername()).getGoal();
+
+                // if current weight is lower than goal, send congratulating text to user
+                if (currentWeight <= targetWeight) {
+                    sendTextToUser();
+                }
             }
 
         }catch (Exception e) {
@@ -218,8 +223,14 @@ public class WeightActivity extends AppCompatActivity {
                 }
             }
             else {
-                System.out.println("A necessary permission was not granted for text notification");
+                // show toast
+//                Toast toast = makeText(WeightActivity.this, "Congratulations, you reached your target weight!",
+//                        Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.TOP, 0, 0);
+//                toast.getView().setBackgroundColor(0xFFCC99FF);
+//                toast.show();
             }
+
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -352,34 +363,38 @@ public class WeightActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        System.out.println("resultCode: " + resultCode + "... requestCode: " + requestCode);
-
         if(resultCode == Activity.RESULT_OK) {
 
             // for adding a record
             if (requestCode == LAUNCH_ADD_RECORD_ACTIVITY) {
-                mNewDailyWeight = (DailyWeight) data.getSerializableExtra("newDailyWeight");
-                mNewDailyWeight.setUsername(mUser.getUsername());
+                try {
+                    mNewDailyWeight = (DailyWeight) data.getSerializableExtra("newDailyWeight");
+                    mNewDailyWeight.setUsername(mUser.getUsername());
 
-                mDailyWeightDao.insertDailyWeight(mNewDailyWeight);
-                refreshTable();
-                reachedGoalCheck();
+                    mDailyWeightDao.insertDailyWeight(mNewDailyWeight);
+                    refreshTable();
+                    refreshTargetWeight();
+                    reachedGoalCheck();
 
-                // show toast
-                Toast toast = Toast.makeText(WeightActivity.this, "Weight record successfully added",
-                        Toast.LENGTH_LONG);
-                toast.getView().setBackgroundColor(0xFFCC99FF);
-                toast.show();
+//                    // show toast
+                    Toast toast = Toast.makeText(WeightActivity.this, "Weight record successfully added",
+                            Toast.LENGTH_LONG);
+                    toast.getView().setBackgroundColor(0xFFCC99FF);
+                    toast.show();
+
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             // for changing a record
             if (requestCode == LAUNCH_CHANGE_RECORD_ACTIVITY) {
-                System.out.println("result code was LAUNCH_CHANGE_RECORD_ACTIVITY");
                 refreshTable();
+                refreshTargetWeight();
                 reachedGoalCheck();
 
                 // show toast
-                Toast toast = Toast.makeText(WeightActivity.this, "Weight record successfully changed",
+                Toast toast = makeText(WeightActivity.this, "Weight record successfully changed",
                         Toast.LENGTH_LONG);
                 toast.getView().setBackgroundColor(0xFFCC99FF);
                 toast.show();
@@ -388,9 +403,10 @@ public class WeightActivity extends AppCompatActivity {
             // for deleting a record
             if (requestCode == LAUNCH_DELETE_RECORD_ACTIVITY) {
                 refreshTable();
+                refreshTargetWeight();
 
                 // show toast
-                Toast toast = Toast.makeText(WeightActivity.this, "Weight record successfully deleted",
+                Toast toast = makeText(WeightActivity.this, "Weight record successfully deleted",
                         Toast.LENGTH_LONG);
                 toast.getView().setBackgroundColor(0xFFCC99FF);
                 toast.show();
@@ -403,7 +419,7 @@ public class WeightActivity extends AppCompatActivity {
                 reachedGoalCheck();
 
                 // show toast
-                Toast toast = Toast.makeText(WeightActivity.this, "Target weight successfully updated",
+                Toast toast = makeText(WeightActivity.this, "Target weight successfully updated",
                         Toast.LENGTH_LONG);
                 toast.getView().setBackgroundColor(0xFFCC99FF);
                 toast.show();

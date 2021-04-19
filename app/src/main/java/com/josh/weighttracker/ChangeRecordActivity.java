@@ -33,7 +33,6 @@ public class ChangeRecordActivity extends AppCompatActivity {
     private EditText mWeight_editText;
     private Button mSaveButton;
     private Button mChangeButton;
-    private Button mCancelButton;
     TextView mPrompt;
     Date mDate;
     DateFormat mFormatter;
@@ -54,7 +53,6 @@ public class ChangeRecordActivity extends AppCompatActivity {
             mWeight_editText = (EditText) this.findViewById(R.id.deleteRecord_editTextWeight);
             mSaveButton = (Button) this.findViewById(R.id.goalWeight_saveButton);
             mChangeButton = (Button) this.findViewById(R.id.changeRecord_button);
-            mCancelButton = (Button) this.findViewById(R.id.goalWeight_cancelButton);
             mPrompt = (TextView) this.findViewById(R.id.change_record_prompt);
 
             // get current user from intent
@@ -70,6 +68,10 @@ public class ChangeRecordActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for change date button
+     * Looks for user's date input in database and allows user to enter new weight for the date
+     */
     public void changeDate_buttonClick(View view) {
         try {
             // hide keyboard
@@ -105,6 +107,10 @@ public class ChangeRecordActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Callback for save button
+     * Performs update query on the specified date in the DailyWeight table
+     */
     public void change_saveButtonClick(View view) {
         try {
             if (mDate == null) {
@@ -137,7 +143,10 @@ public class ChangeRecordActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Callback for cancel button
+     * Stops this activity and returns to calling activity
+     */
     public void change_cancelButtonClick(View view) {
         Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
