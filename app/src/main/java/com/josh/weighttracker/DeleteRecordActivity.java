@@ -21,6 +21,7 @@ import com.josh.weighttracker.model.User;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class DeleteRecordActivity extends AppCompatActivity {
@@ -118,11 +119,22 @@ public class DeleteRecordActivity extends AppCompatActivity {
             return;
         }
 
+        List<DailyWeight> userDailyWeights = mDailyWeightDao
+                .getDailyWeightsOfUser(mUser.getUsername());
+
+
         // delete record from database
         mDailyWeightDao.deleteDailyWeight(mUser.getUsername(), mDate);
 
+        // did we just delete the only record?
+        boolean onlyRecordDeleted = false;
+        if (userDailyWeights.size() == 0) {
+            onlyRecordDeleted = true;
+        }
+
         // end this activity and return to calling activity
         Intent returnableIntent = getIntent();
+        returnableIntent.putExtra("onlyRecordDeleted", onlyRecordDeleted);
         setResult(Activity.RESULT_OK, returnableIntent);
         System.out.println("confirmButtonOnClick success...... what could be wrong");
         finish();

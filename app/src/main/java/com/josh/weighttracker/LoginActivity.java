@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!found) {
                     mUserDao.insertUser(new User(username, password));
                     mFeedback.setText(R.string.user_create_success);
-                    mFeedback.setTextColor(Color.GREEN);
+                    mFeedback.setTextColor(Color.parseColor("#0e6b0e"));
                 }
                 // else if username is already taken, notify user
                 else {

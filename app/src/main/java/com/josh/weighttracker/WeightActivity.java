@@ -13,6 +13,7 @@ import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -47,6 +48,8 @@ public class WeightActivity extends AppCompatActivity {
     DailyWeight mNewDailyWeight;
     TableLayout mTableLayout;
     TextView mTargetWeight;
+    TableRow mNoRecordsRow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,9 @@ public class WeightActivity extends AppCompatActivity {
             // get singleton instance of database
             mWeightTrackerDb = WeightTrackerDatabase.getInstance(getApplicationContext());
             mDailyWeightDao = mWeightTrackerDb.dailyWeightDao();
+
+            // row to tell user there are no records to display
+            mNoRecordsRow = (TableRow) findViewById(R.id.noRecordsRow);
 
             // get User object from login screen
             Intent intent = getIntent();
@@ -116,44 +122,54 @@ public class WeightActivity extends AppCompatActivity {
             cleanTable(mTableLayout);
             // get all DailyWeight records of this user
             List<DailyWeight> userDailyWeights = mDailyWeightDao.getDailyWeightsOfUser(mUser.getUsername());
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
-            TableRow header = (TableRow) findViewById(R.id.headerRow);
-            TextView headerDate = (TextView) findViewById(R.id.headerDate);
-            TextView headerWeight = (TextView) findViewById(R.id.headerWeight);
 
-            // layout parameters for row:
-            TableLayout.LayoutParams layoutParamsTable = (TableLayout.LayoutParams) header.getLayoutParams();
-            // layout parameters for textViews:
-            TableRow.LayoutParams layoutParamsRow = (TableRow.LayoutParams) headerDate.getLayoutParams();
+            // if there are no DailyWeights for this user
+            if (userDailyWeights.size() == 0) {
+                System.out.println("addNoRecordsRow executed.;asldkfhas;dlkjfhas;dessssssssssssssssssssssssssssssss");
+                addNoRecordsRow(mTableLayout);
+            }
+            // if there are DailyWeights for this user
+            else {
 
-            for (int i = 0; i < userDailyWeights.size(); i++) {
-                TableRow row = new TableRow(this);
-                TextView dateTextView = new TextView(this);
-                TextView weightTextView = new TextView(this);
+                DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+                TableRow header = (TableRow) findViewById(R.id.headerRow);
+                TextView headerDate = (TextView) findViewById(R.id.headerDate);
+                TextView headerWeight = (TextView) findViewById(R.id.headerWeight);
 
-                // activate the layout parameters
-                row.setLayoutParams(layoutParamsTable);
-                dateTextView.setLayoutParams(layoutParamsRow);
-                weightTextView.setLayoutParams(layoutParamsRow);
-                // set additional view properties
-                dateTextView.setWidth(0);
-                dateTextView.setGravity(Gravity.CENTER);
-                dateTextView.setPadding(20, 20, 20, 20);
-                weightTextView.setWidth(0);
-                weightTextView.setGravity(Gravity.CENTER);
-                weightTextView.setPadding(20, 20, 20, 20);
+                // layout parameters for row:
+                TableLayout.LayoutParams layoutParamsTable = (TableLayout.LayoutParams) header.getLayoutParams();
+                // layout parameters for textViews:
+                TableRow.LayoutParams layoutParamsRow = (TableRow.LayoutParams) headerDate.getLayoutParams();
 
-                // set the value of the date TextView
-                dateTextView.setText(formatter.format(userDailyWeights.get(i).getDate()));
-                // set the value of the weight TextView
-                weightTextView.setText(Double.toString(userDailyWeights.get(i).getWeight()));
+                for (int i = 0; i < userDailyWeights.size(); i++) {
+                    TableRow row = new TableRow(this);
+                    TextView dateTextView = new TextView(this);
+                    TextView weightTextView = new TextView(this);
 
-                // add the 2 TextViews to the current row
-                row.addView(dateTextView);
-                row.addView(weightTextView);
+                    // activate the layout parameters
+                    row.setLayoutParams(layoutParamsTable);
+                    dateTextView.setLayoutParams(layoutParamsRow);
+                    weightTextView.setLayoutParams(layoutParamsRow);
+                    // set additional view properties
+                    dateTextView.setWidth(0);
+                    dateTextView.setGravity(Gravity.CENTER);
+                    dateTextView.setPadding(20, 20, 20, 20);
+                    weightTextView.setWidth(0);
+                    weightTextView.setGravity(Gravity.CENTER);
+                    weightTextView.setPadding(20, 20, 20, 20);
 
-                // add row to TableLayout
-                mTableLayout.addView(row);
+                    // set the value of the date TextView
+                    dateTextView.setText(formatter.format(userDailyWeights.get(i).getDate()));
+                    // set the value of the weight TextView
+                    weightTextView.setText(Double.toString(userDailyWeights.get(i).getWeight()));
+
+                    // add the 2 TextViews to the current row
+                    row.addView(dateTextView);
+                    row.addView(weightTextView);
+
+                    // add row to TableLayout
+                    mTableLayout.addView(row);
+                }
             }
 
         }catch (Exception e) {
@@ -162,6 +178,7 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     // Remove all but the header from the TableLayout
+    // Also leave "no records" row if there are no DailyWeights
     private void cleanTable(TableLayout table) {
         try {
             int childCount = table.getChildCount();
@@ -171,9 +188,34 @@ public class WeightActivity extends AppCompatActivity {
                 table.removeViews(1, childCount - 1);
             }
 
+//            List<DailyWeight> userDailyWeights = mDailyWeightDao
+//                    .getDailyWeightsOfUser(mUser.getUsername());
+//            int childCount = table.getChildCount();
+//
+//            // if there are no DailyWeights yet and there is more than two rows
+//            if (userDailyWeights.size() == 0 && childCount > 2) {
+//                // remove all rows except header and "no dates/weights yet..." rows
+//                table.removeViews(2, childCount - 1);
+//            }
+//            // if there is no DailyWeights yet and there is only the header row
+//            else if (userDailyWeights.size() == 0 && childCount == 1) {
+//                // add the no records row
+//                addNoRecordsRow(mTableLayout);
+//            }
+//            // else if there are DailyWeights and there is more than one row
+//            else if (userDailyWeights.size() > 0 && childCount > 1) {
+//                // remove all rows except the header
+//                table.removeViews(1, childCount - 1);
+//            }
+
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void addNoRecordsRow(TableLayout table) {
+        mTableLayout.addView(mNoRecordsRow);
+        System.out.println("addNoRecordsRow() EXECUTED....................................................");
     }
 
     // Check if user has reached target weight
@@ -286,7 +328,6 @@ public class WeightActivity extends AppCompatActivity {
             // call AddRecordActivity to get new date and weight input from user
             Intent intent = new Intent(this, AddRecordActivity.class);
             startActivityForResult(intent, LAUNCH_ADD_RECORD_ACTIVITY);
-//            intent.putExtra("user", mUser);
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -402,8 +443,14 @@ public class WeightActivity extends AppCompatActivity {
 
             // for deleting a record
             if (requestCode == LAUNCH_DELETE_RECORD_ACTIVITY) {
+                cleanTable(mTableLayout);
                 refreshTable();
                 refreshTargetWeight();
+
+//                boolean noRecordsLeft = data.getBooleanExtra("onlyRecordDeleted", false);
+//                if (noRecordsLeft) {
+//                    addNoRecordsRow(mTableLayout);
+//                }
 
                 // show toast
                 Toast toast = makeText(WeightActivity.this, "Weight record successfully deleted",

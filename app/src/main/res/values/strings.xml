@@ -25,4 +25,6 @@
     <string name="header_weight"><u>WEIGHT (LBS)</u></string>
     <string name="header_date"><u>DATE</u></string>
     <string name="date_hint">Date (MM/DD/YYYY)</string>
+    <string name="no_date">no weights to show...</string>
+    <string name="no_weight">Please add records with the above button</string>
 </resources>

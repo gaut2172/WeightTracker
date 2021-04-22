@@ -103,6 +103,21 @@
 
                 </TableRow>
 
+                <TableRow
+                    android:id="@+id/noRecordsRow">
+
+                    <TextView
+                        android:id="@+id/noWeight"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/no_weight"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
             </TableLayout>
         </ScrollView>
 
