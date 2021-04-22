@@ -5,10 +5,11 @@ the user when they have reached a target weight. The app provides a
 useful list of past records to help the user reach their goal.
 
 # Motivation
-I have developed this app for people who want to lose weight. I
-am always eager to improve my mental and physical health, so when I was
-required to develop an Android app for school, I saw a way to help
-others in achieving good health.
+I am always eager to improve my health physically and mentally. When I
+was required to develop an Android app for school, I saw a way to help
+others in achieving good health. If this app helps just one person
+to be more motivated or healthy, I will consider the project
+a success.
 
 # Screenshots
 ![Login screen:](Screenshots/Login.jpg)
