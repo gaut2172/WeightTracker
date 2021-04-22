@@ -1,8 +1,8 @@
 # About the Project
 Weight Tracker is a weight watching mobile application for Android
-devices. It logs daily weights in a list format and notifies the user when they
-have reached a target weight. The app provides a useful list of past
-records to help the user reach their goal.
+devices. The user can log daily weights in a list format and notifies
+the user when they have reached a target weight. The app provides a
+useful list of past records to help the user reach their goal.
 
 # Motivation
 I have developed this app for people who want to lose weight. I
@@ -12,15 +12,12 @@ others in achieving good health.
 
 # Screenshots
 ![Login screen:](Screenshots/Login.jpg)
-<br/>
 ![List of weights screen:](Screenshots/Weights.jpg)
 <br/>
 ![Add weight record screen:](Screenshots/Add.jpg)
-<br/>
 ![Change weight record screen:](Screenshots/ChangeWeight.jpg)
 <br/>
 ![Delete weight record screen:](Screenshots/Delete.jpg)
-<br/>
 ![Change target weight screen:](Screenshots/ChangeTarget.jpg)
 <br/>
 
