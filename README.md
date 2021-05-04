@@ -36,4 +36,4 @@ target weight is reached
 # Requirements
 Currently supported Android versions include 10, 9, and 8.1.0. Device
 must be an Android phone or tablet. To receive text message
-notifications, device must have messaging capabilities.
+notifications, device must have messaging and phone capabilities.
