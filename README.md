@@ -11,6 +11,9 @@ others in achieving good health. If this app helps just one person
 to be more motivated or healthy, I will consider the project
 a success.
 
+# YouTube Demo
+https://www.youtube.com/watch?v=0Wjm-San0ag
+
 # Screenshots
 ![Login screen:](Screenshots/Login.jpg)
 ![List of weights screen:](Screenshots/Weights.jpg)
